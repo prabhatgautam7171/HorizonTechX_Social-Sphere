@@ -175,13 +175,15 @@ function Feed() {
 
 
             {/* Create Post */}
-            <div className="sm:hidden border-b mb-5 p-2 rounded-4xl shadow-sm ml-4 mr-4 bg-blue-100">
+            {/* MOBILE CREATE POST */}
+            <div className="sm:hidden bg-white rounded-2xl shadow-sm border border-gray-100 mx-3 mb-5 p-4">
 
+              {/* Top Row */}
               <div className="flex items-center gap-3">
 
                 {/* Avatar */}
-                <div className="w-9 h-9 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white font-semibold">
-                  P
+                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 flex items-center justify-center text-white font-semibold">
+                  {user?.username?.charAt(0).toUpperCase() || "P"}
                 </div>
 
                 {/* Input */}
@@ -190,69 +192,21 @@ function Feed() {
                   placeholder="What's on your mind?"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  className="flex-1 border border-gray-200 rounded-full px-4 py-2 text-sm outline-none"
+                  className="
+      flex-1
+      bg-gray-100
+      rounded-full
+      px-4
+      py-2.5
+      text-sm
+      outline-none
+    "
                 />
-
-                {/* Upload */}
-                <label
-                  htmlFor="image-upload"
-                  className="cursor-pointer text-gray-600"
-                >
-                  <PlusIcon className="w-6 h-6" />
-                </label>
-
-                {/* Post */}
-                {
-                    isLoading ? (
-                      <button
-                        disabled
-                        className="
-    sm:w-auto
-    px-6
-    py-3
-    bg-gray-400
-    text-white
-    rounded-full
-    font-medium
-  "
-                      >
-                        Posting...
-                      </button>
-                    ) : (
-                      <button
-                        onClick={createPost}
-                        className="
-
-    sm:w-auto
-    px-6
-    py-3
-    bg-gradient-to-r
-    from-indigo-500
-    to-purple-600
-    text-white
-    rounded-full
-    font-medium
-    hover:shadow-lg
-    transition
-  "
-                      >
-                        ✨ Post
-                      </button>
-                    )
-                  }
-
               </div>
 
-              <input
-                id="image-upload"
-                type="file"
-                hidden
-                accept="image/*,.mp4,.mov,.avi,video/*"
-                onChange={handleImageChange}
-              />
-
+              {/* Preview */}
               {!isPosted && imagePreview && (
-                <div className="relative w-fit">
+                <div className="relative mt-4 w-fit">
 
                   {imageFile?.type?.startsWith("video") ? (
 
@@ -295,22 +249,91 @@ function Feed() {
         absolute
         -top-2
         -right-2
-        w-7
-        h-7
+        w-6
+        h-6
         bg-black
         text-white
         rounded-full
+        text-xs
         flex
         items-center
         justify-center
-        text-xs
       "
                   >
                     ✕
                   </button>
-
                 </div>
               )}
+
+              {/* Bottom Actions */}
+              <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
+
+                {/* Upload */}
+                <div className="flex items-center gap-4">
+
+                  <input
+                    id="mobile-image-upload"
+                    type="file"
+                    hidden
+                    accept="image/*,video/*"
+                    onChange={handleImageChange}
+                  />
+
+                  <label
+                    htmlFor="mobile-image-upload"
+                    className="
+        cursor-pointer
+        text-gray-600
+        hover:text-indigo-600
+        transition
+      "
+                  >
+                    <PlusIcon className="w-6 h-6" />
+                  </label>
+
+                  <span className="text-sm text-gray-500">
+                    Photo / Video
+                  </span>
+
+                </div>
+
+                {/* Post Button */}
+                {isLoading ? (
+                  <button
+                    disabled
+                    className="
+        px-5
+        py-2
+        bg-gray-300
+        text-white
+        rounded-full
+        text-sm
+        font-medium
+      "
+                  >
+                    Posting...
+                  </button>
+                ) : (
+                  <button
+                    onClick={createPost}
+                    className="
+        px-5
+        py-2
+        bg-gradient-to-r
+        from-indigo-500
+        to-purple-600
+        text-white
+        rounded-full
+        text-sm
+        font-medium
+        shadow-md
+      "
+                  >
+                    Post
+                  </button>
+                )}
+
+              </div>
 
             </div>
             <div className="hidden sm:block">
