@@ -4,7 +4,11 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
      "start": "nodemon server.js"
+=======
+    "start": "node server.js"
+>>>>>>> dc72cd4 (Configure production API URL)
   },
   "keywords": [],
   "author": "",
