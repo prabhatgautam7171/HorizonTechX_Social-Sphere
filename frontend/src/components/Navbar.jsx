@@ -30,7 +30,7 @@ function Navbar() {
             <span className="text-xl">🌐</span>
           </div>
           <h2 className="text-sm font-bold bg-gradient-to-r from-gray-800 to-gray-700 bg-clip-text text-transparent tracking-tight">
-            Social<span className="bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent">Sphere</span>
+            Pista<span className="bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent">Gram</span>
           </h2>
         </div>
 
